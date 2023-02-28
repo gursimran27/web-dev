@@ -22,20 +22,26 @@ let password="";
 let passwordLength=10;
 let checkCount=0;
 
-// set strength circle color to gray  
+// set strength circle color to gray 
+ setIndicator("#ccc");
 
 
 // set password length and reflect it on UI
  function handleSlider(){
     inputSlider.value=passwordLength;
     lengthDisplay.textContent=passwordLength;
+
+    const min=inputSlider.min;
+    const max=inputSlider.max;
+    inputSlider.style.backgroundSize=((passwordLength - min)*100/(max-min)) + '% 100%';  //represent width and height respectively so according to that it will get color
 }
 
 handleSlider();
 
 function setIndicator(color){
-    indicator.getElementsByClassName.backgroundColor=color;
+    indicator.style.backgroundColor=color;
     // shadow homework
+    indicator.style.boxShadow=`0px 0px 12px 1px ${color}`;
 }
 
 
@@ -124,13 +130,14 @@ async function copyContent(){
 function shuflePassword(array){
     //fisher yates method algorithm
     for(let i=array.length-1;i>0;i--){
-        const j=Math.floor(Math.random() * (i+1));
+        const j=Math.floor(Math.random() * (i+1));   //0 to i+1 range
+        //swapping
         const temp=array[i];
         array[i]=array[j];
         array[j]=temp;
     }
     let str="";
-    array.forEach((element) => {str+=element});
+    array.forEach((element) => {str+=element}); //convert arrat to string
     return str;
 }
 
