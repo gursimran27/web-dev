@@ -31,6 +31,7 @@ let checkCount=0;
     inputSlider.value=passwordLength;
     lengthDisplay.textContent=passwordLength;
 
+        // *! important
     const min=inputSlider.min;
     const max=inputSlider.max;
     inputSlider.style.backgroundSize=((passwordLength - min)*100/(max-min)) + '% 100%';  //represent width and height respectively so according to that it will get color
