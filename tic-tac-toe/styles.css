@@ -89,10 +89,13 @@
     /* because at starting it is not vissible */
 }
 
+/* *! for js */
 .btn.active{
     display: flex;
 }
 
+
+/* *! for js */
 .win{
     /* win class is used when a player won the game */
     background-color: rgba(0, 255, 0, 0.3);

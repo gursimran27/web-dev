@@ -30,11 +30,13 @@ function initGame(){
     // to empty boxes on UI
     boxes.forEach((box,index) => {
         box.innerText="";
+
         boxes[index].style.pointerEvents="all";
         // missing i.e initiliae box with their default css properties again
         // we got to know this while testing
+
         box.classList=`box box${index+1}`;
-        // because each box orignally belong to class os box and box1 and so-on...
+        // because each box orignally belong to class of box and box1 and so inorder to remove green bg-color from winner boxes
 
 
         // **not working
@@ -53,7 +55,8 @@ initGame();
 function handleClick(index){
     if(gameGrid[index]===""){ //if it is empty at that index i.e neither X nor O  this also made unclickable to already occupied position
 
-        boxes[index].innerText = currentPlayer;//it will reflect on UI
+        boxes[index].innerText = currentPlayer;
+        //it will reflect on UI
         gameGrid[index] = currentPlayer;
         // it will update in gamegrid array for our referance of game status
 
@@ -88,8 +91,7 @@ function checkGameOver(){
     winningPosition.forEach((index) => {
         // all 3 boxes should non-empty and exactly same i.e either X or O
         if((gameGrid[index[0]]!=="" || gameGrid[index[1]]!=="" || gameGrid[index[2]]!=="") && (gameGrid[index[0]]===gameGrid[index[1]]) && (gameGrid[index[1]]===gameGrid[index[2]])){
-
-            // check if winner is X
+              // check if winner is X
             if(gameGrid[index[0]]==="X")
                 ans="X";
             else{
@@ -126,7 +128,7 @@ function checkGameOver(){
     // when there is no winner i.e tie
     let fillCount=0;
     boxes.forEach((box) =>{
-        if(box.innerText!=""){
+        if(box.innerText!==""){
             fillCount++;
         }
     });
