@@ -11,7 +11,7 @@ const BlogPage = () => {
 
   const [blog, setBlog] = useState(null);
 
-  const [relatedBlogs, setRelatedBlogs] = useState([]);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);//array of objects
 
   const location = useLocation();
 
@@ -24,6 +24,7 @@ const BlogPage = () => {
   async function fetchRelatedBlogs() {
     setLoading(true);
     let url = `${newURL}get-blog?blogId=${blogId}`;
+    // in url of our wesite it is http://localhost:3000/blog/BLOG100 and here is no query string so only when in that page we clciked on new blog then UI will no repaint so we need to add location.pathname as dependices in useEffect hook
 
     try {
       const result = await fetch(url);
@@ -43,7 +44,8 @@ const BlogPage = () => {
     if (blogId) {
       fetchRelatedBlogs();
     }
-  }, [location.pathname]);
+  }, [location.pathname]); 
+// in url of our wesite it is http://localhost:3000/blog/BLOG100 and here is no query string so only when in that page we clciked on new blog then UI will no repaint so we need to add location.pathname as dependices in useEffect hook
 
   return (
     <div className="mt-24 -mb-16">

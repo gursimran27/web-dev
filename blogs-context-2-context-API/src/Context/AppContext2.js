@@ -15,7 +15,6 @@ export default function AppContextProvider({ children }) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const nav = useNavigate();
-  const [searchParams , setSearchParams]=useSearchParams();
 
   // data filling
   // we have 3 API for 3 differnet work
@@ -53,9 +52,8 @@ export default function AppContextProvider({ children }) {
 
   function HandlePageChange(page) {
     setPage(page);
-    nav({ search: `?page=${page}` }); //*! this will simply update the query paramter/search parameter
-    
-  //! importanrt search refers to query parameter/string  while the URL remain same and in this we have passed an object..this will update the location.search ...useEffect
+    nav({ search: `?page=${page}` }); //*! this will simply update the query paramter/search parameter  and updates are also reflected on URL
+  //! importanrt search refers to query parameter/string  while the rest thigs in URL remain same and in this we have passed an object..this will update the location.search ...useEffect
     // this will make change in query string/search parameter of URl and as location.search changes so in app.js under useeffect hook that particular API is called and them rendering take place
   }
 
